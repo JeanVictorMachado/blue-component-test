@@ -1,5 +1,5 @@
-import { useMemo } from 'react'
-import { DataGrid, ptBR, DataGridProps } from '@mui/x-data-grid'
+import { ReactElement, ReactNode, useMemo } from 'react'
+import { DataGrid, ptBR, DataGridProps, GridRowsProp } from '@mui/x-data-grid'
 
 import { EmptyGrid } from './EmptyGrid'
 import { gridStyles } from './styles'
@@ -10,14 +10,25 @@ export type RowProps = {
   [X: string]: string | number
 }
 
+export type ElementProps = {
+  icon: ReactElement
+  label: string
+  onClick: (params: GridRowsProp) => void
+}
+
+export type OptionsProps = {
+  columnName: string
+  elements: ElementProps[]
+}
+
 type GridProps = Omit<DataGridProps, 'rows' | 'columns'> & {
   data: RowProps[]
   heightGrid?: number | string
-  // optionsGrid?: ReactNode
+  optionsGrid?: OptionsProps
 }
 
-export const Grid = ({ data, heightGrid, ...props }: GridProps) => {
-  const columns = useMemo(() => parseColumns(data), [data])
+export const Grid = ({ data, heightGrid, optionsGrid, ...props }: GridProps) => {
+  const columns = useMemo(() => parseColumns(data, optionsGrid), [data])
   const rows = useMemo(() => parseRows(data), [data])
 
   const styles = useMemo(() => {

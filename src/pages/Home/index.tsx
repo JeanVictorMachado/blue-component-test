@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
 import { Grid } from '~/components/Grid'
 
-// import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
 
 export const Home = () => {
   const data = [
@@ -65,7 +65,19 @@ export const Home = () => {
 
   return (
     <Box padding={4}>
-      <Grid data={data} />
+      <Grid
+        data={data}
+        optionsGrid={{
+          columnName: 'Options',
+          elements: [
+            {
+              label: 'Edit',
+              icon: <EditOutlinedIcon />,
+              onClick: (params) => console.log(params),
+            },
+          ],
+        }}
+      />
     </Box>
   )
 }

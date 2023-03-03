@@ -1,7 +1,8 @@
-import { GridColDef } from '@mui/x-data-grid'
-import { RowProps } from '..'
+import { GridActionsCellItem, GridColDef, GridRowsProp } from '@mui/x-data-grid'
 
-export const parseColumns = (data: RowProps[]) => {
+import { OptionsProps, RowProps } from '..'
+
+export const parseColumns = (data: RowProps[], options?: OptionsProps) => {
   const keyNames = Object.keys(data[0]).filter((name) => name !== 'id')
 
   const columns = keyNames.map((name, index) => {
@@ -13,5 +14,25 @@ export const parseColumns = (data: RowProps[]) => {
     }
   })
 
-  return columns as GridColDef[]
+  return !options
+    ? (columns as GridColDef[])
+    : ([
+        ...columns,
+        {
+          field: options.columnName,
+          headerName: options.columnName,
+          type: 'actions',
+          minWidth: 120,
+          align: 'center',
+          getActions: (params: GridRowsProp) =>
+            options.elements.map((item, index) => (
+              <GridActionsCellItem
+                key={index + 1}
+                icon={item.icon}
+                label={item.label}
+                onClick={() => item.onClick(params)}
+              />
+            )),
+        },
+      ] as GridColDef[])
 }
