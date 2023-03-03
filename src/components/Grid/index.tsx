@@ -1,4 +1,4 @@
-import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid'
+import { DataGrid, GridRowsProp, GridColDef, ptBR } from '@mui/x-data-grid'
 
 const rows: GridRowsProp = [
   {
@@ -69,12 +69,7 @@ export const Grid = () => {
       autoHeight
       showCellRightBorder
       showColumnRightBorder
-      localeText={{
-        MuiTablePagination: {
-          labelRowsPerPage: 'Linhas por página:',
-          labelDisplayedRows: (texts: any) => `${texts.from} - ${texts.to} de ${texts.count}`,
-        },
-      }}
+      localeText={ptBR.components.MuiDataGrid.defaultProps.localeText}
     />
   )
 }
