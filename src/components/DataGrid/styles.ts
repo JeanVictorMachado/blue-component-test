@@ -1,7 +1,28 @@
 import styled from 'styled-components'
 import { DataGrid as MuiDataGrid } from '@mui/x-data-grid'
 
-export const DataGrid = styled(MuiDataGrid)``
+export const DataGrid = styled(MuiDataGrid)`
+  .data-grid__footer {
+    min-height: 30px;
+
+    p,
+    div {
+      font-size: 12px;
+    }
+
+    button {
+      svg {
+        width: 18px;
+      }
+    }
+  }
+
+  .data-grid__pagination {
+    > div {
+      min-height: 30px;
+    }
+  }
+`
 
 export const GridStyles = {
   border: 'none',

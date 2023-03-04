@@ -28,12 +28,12 @@ export const getColumns = ({ data, actions }: GetColumnsProps) => {
           headerAlign: 'left',
           width: actions.cellWidth ? actions.cellWidth : 100,
           getActions: (params: GridRowParams) =>
-            actions.elements.map((element) => (
+            actions.elements.map((item) => (
               <GridActionsCellItem
-                key={element.id}
-                label={element.id}
-                icon={cloneElement(element.element, { params })}
-                onClick={() => element.onClick && element.onClick(params)}
+                key={item.id}
+                label={item.id}
+                icon={cloneElement(item.element, { params })}
+                onClick={() => item.onClick && item.onClick(params)}
                 sx={{
                   padding: 0,
                   '&:hover': {

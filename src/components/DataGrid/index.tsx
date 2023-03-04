@@ -24,6 +24,11 @@ export const DataGrid = ({ data, heightGrid, actions, ...props }: GridProps) => 
       showColumnRightBorder
       rowsPerPageOptions={[5, 10, 20, 50, 100]}
       localeText={ptBR.components.MuiDataGrid.defaultProps.localeText}
+      componentsProps={{
+        footer: { className: 'data-grid__footer' },
+        toolbar: { className: 'data-grid__toolbar' },
+        pagination: { className: 'data-grid__pagination' },
+      }}
       components={{ NoRowsOverlay: () => <Empty /> }}
       isRowSelectable={() => false}
       disableColumnFilter
