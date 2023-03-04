@@ -7,7 +7,7 @@ type ButtonsProps = {
 
 import * as S from '../../pages/Home/styles'
 
-export const ButtonsTest = ({ params, onButtonClick }: ButtonsProps) => (
+export const Buttons = ({ params, onButtonClick }: ButtonsProps) => (
   <div
     style={{
       display: 'flex',

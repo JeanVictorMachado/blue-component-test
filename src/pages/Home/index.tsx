@@ -1,11 +1,10 @@
 import { Box } from '@mui/material'
 
 import { DataGrid } from '~/components/DataGrid'
-import { data } from './mock'
-
+import { Buttons } from '~/components/Buttons'
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
-import { ButtonsTest } from '~/components/ButtonsTest'
+import { data } from './mock'
 
 import * as S from './styles'
 
@@ -52,7 +51,7 @@ export const Home = () => {
             elements: [
               {
                 id: 'buttons',
-                element: <ButtonsTest onButtonClick={(id, params) => console.log(id, params)} />,
+                element: <Buttons onButtonClick={(id, params) => console.log(id, params)} />,
               },
             ],
           }}

@@ -3,8 +3,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import { data } from '../../pages/Home/mock'
+import { Buttons } from '../Buttons'
 import { DataGrid } from '.'
-import { ButtonsTest } from '../ButtonsTest'
 
 export default {
   title: 'Example/DataGrid',
@@ -48,7 +48,7 @@ WithButtons.args = {
     elements: [
       {
         id: 'buttons-id',
-        element: <ButtonsTest onButtonClick={(id, params) => console.log(id, params)} />,
+        element: <Buttons onButtonClick={(id, params) => console.log(id, params)} />,
       },
     ],
   },
