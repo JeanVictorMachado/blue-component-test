@@ -15,6 +15,7 @@ export type ActionProps = {
   columnName: string
   cellWidth?: number
   elements: ElementProps[]
+  align?: 'left' | 'center' | 'right'
 }
 
 export type GridProps = Omit<DataGridProps, 'rows' | 'columns'> & {

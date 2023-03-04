@@ -1,4 +1,4 @@
-import { Box } from '@mui/material'
+import { Box, Link } from '@mui/material'
 
 import { DataGrid } from '~/components/DataGrid'
 import { Buttons } from '~/components/Buttons'
@@ -27,6 +27,25 @@ export const Home = () => {
             elements: [
               {
                 id: 'edit',
+                element: <Link style={{ color: 'black' }}>View</Link>,
+                onClick: (params) => console.log({ edit: params }),
+              },
+            ],
+          }}
+        />
+      </Box>
+
+      <Box>
+        <S.GridTitle>Com uma Action</S.GridTitle>
+
+        <DataGrid
+          data={data}
+          actions={{
+            columnName: 'Options',
+            align: 'center',
+            elements: [
+              {
+                id: 'edit',
                 element: <EditOutlinedIcon />,
                 onClick: (params) => console.log({ edit: params }),
               },
@@ -46,8 +65,9 @@ export const Home = () => {
         <DataGrid
           data={data}
           actions={{
-            cellWidth: 244,
             columnName: 'Options',
+            align: 'center',
+            cellWidth: 244,
             elements: [
               {
                 id: 'buttons',

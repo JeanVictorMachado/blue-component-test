@@ -26,6 +26,7 @@ export const getColumns = ({ data, actions }: GetColumnsProps) => {
           headerName: actions.columnName,
           type: 'actions',
           headerAlign: 'left',
+          align: actions.align,
           width: actions.cellWidth ? actions.cellWidth : 100,
           getActions: (params: GridRowParams) =>
             actions.elements.map((item) => (

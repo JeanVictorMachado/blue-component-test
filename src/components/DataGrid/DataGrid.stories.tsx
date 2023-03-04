@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Link } from '@mui/material'
 
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
@@ -19,11 +20,27 @@ const Template: ComponentStory<typeof DataGrid> = (args) => <DataGrid {...args} 
 export const Default = Template.bind({})
 Default.args = { data }
 
+export const WithLink = Template.bind({})
+WithLink.args = {
+  data,
+  actions: {
+    columnName: 'Actions',
+    elements: [
+      {
+        id: 'link-id',
+        element: <Link style={{ color: 'black' }}>View</Link>,
+        onClick: (params) => console.log({ link: params }),
+      },
+    ],
+  },
+}
+
 export const WithIcons = Template.bind({})
 WithIcons.args = {
   data,
   actions: {
     columnName: 'Options',
+    align: 'center',
     elements: [
       {
         id: 'edit-id',
@@ -43,8 +60,9 @@ export const WithButtons = Template.bind({})
 WithButtons.args = {
   data,
   actions: {
-    cellWidth: 244,
     columnName: 'Options',
+    align: 'center',
+    cellWidth: 244,
     elements: [
       {
         id: 'buttons-id',
