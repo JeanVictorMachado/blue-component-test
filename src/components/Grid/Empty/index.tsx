@@ -2,7 +2,7 @@ import { Box } from '@mui/material'
 
 import * as S from './styles'
 
-export const EmptyGrid = () => (
+export const Empty = () => (
   <S.StyledGridOverlay>
     <svg width='120' height='80' viewBox='0 0 184 152' aria-hidden focusable='false'>
       <g fill='none' fillRule='evenodd'>

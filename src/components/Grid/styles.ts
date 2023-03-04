@@ -1,5 +1,4 @@
 export const gridStyles = {
-  minHeight: 250,
   border: 'none',
   '.MuiDataGrid-columnHeaders': {
     background: '#E4E8EA',

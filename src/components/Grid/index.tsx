@@ -1,39 +1,35 @@
-import { ReactElement, ReactNode, useMemo } from 'react'
-import { DataGrid, ptBR, DataGridProps, GridRowsProp } from '@mui/x-data-grid'
+import { ReactElement, useMemo } from 'react'
+import { DataGrid, ptBR, DataGridProps, GridRowParams } from '@mui/x-data-grid'
 
-import { EmptyGrid } from './EmptyGrid'
+import { Empty } from './Empty'
 import { gridStyles } from './styles'
-import { parseColumns } from './helpers/parseColumns'
-import { parseRows } from './helpers/parseRows'
+import { getColumns } from './Columns'
+import { getRows } from './Rows'
+
+export type ButtonClickProps = (id: string, params: GridRowParams) => void
 
 export type RowProps = {
   [X: string]: string | number
 }
 
-export type ElementProps = {
-  icon: ReactElement
-  label: string
-  onClick: (params: GridRowsProp) => void
-}
-
-export type OptionsProps = {
+export type ActionProps = {
   columnName: string
-  elements: ElementProps[]
+  cellWidth?: number
+  element: (params: GridRowParams) => ReactElement
 }
 
 type GridProps = Omit<DataGridProps, 'rows' | 'columns'> & {
+  gridId?: string
   data: RowProps[]
   heightGrid?: number | string
-  optionsGrid?: OptionsProps
+  actions?: ActionProps
+  onClick?: ButtonClickProps
 }
 
-export const Grid = ({ data, heightGrid, optionsGrid, ...props }: GridProps) => {
-  const columns = useMemo(() => parseColumns(data, optionsGrid), [data])
-  const rows = useMemo(() => parseRows(data), [data])
-
-  const styles = useMemo(() => {
-    return { ...gridStyles, height: heightGrid }
-  }, [])
+export const Grid = ({ gridId, data, heightGrid, actions, onClick, ...props }: GridProps) => {
+  const styles = useMemo(() => ({ ...gridStyles, height: heightGrid }), [])
+  const columns = useMemo(() => getColumns({ gridId, data, onClick }), [data])
+  const rows = useMemo(() => getRows({ gridId, data }), [data])
 
   return (
     <DataGrid
@@ -47,7 +43,7 @@ export const Grid = ({ data, heightGrid, optionsGrid, ...props }: GridProps) => 
       localeText={ptBR.components.MuiDataGrid.defaultProps.localeText}
       sx={styles}
       components={{
-        NoRowsOverlay: () => <EmptyGrid />,
+        NoRowsOverlay: () => <Empty />,
       }}
       {...props}
     />

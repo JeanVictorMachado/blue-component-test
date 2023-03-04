@@ -1,7 +1,11 @@
 import { GridRowsProp } from '@mui/x-data-grid'
 import { RowProps } from '..'
 
-export const parseRows = (data: RowProps[]) => {
+type DefaultRowsProps = {
+  data: RowProps[]
+}
+
+export const defaultRows = ({ data }: DefaultRowsProps) => {
   const rows = data.map((row, i) => {
     const values = Object.values(row)
 
