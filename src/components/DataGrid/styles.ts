@@ -1,5 +1,11 @@
-export const gridStyles = {
+import styled from 'styled-components'
+import { DataGrid as MuiDataGrid } from '@mui/x-data-grid'
+
+export const DataGrid = styled(MuiDataGrid)``
+
+export const GridStyles = {
   border: 'none',
+
   '.MuiDataGrid-columnHeaders': {
     background: '#E4E8EA',
   },
